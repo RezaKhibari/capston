@@ -1,0 +1,71 @@
+/* Login.css */
+
+/* General reset for login page */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0; /* Set a different background color for the login page */
+}
+
+/* Login container styles */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff; /* White background for the login box */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Input fields styles */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.input-field:focus {
+    border-color: #4facfe;
+}
+
+/* Button styles */
+.btn-modern {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Login button */
+.btn-login {
+    background-color: #4facfe;
+    color: white;
+    border: 2px solid #4facfe;
+}
+
+.btn-login:hover {
+    background-color: #00f2fe;
+    border-color: #00f2fe;
+}
+
+/* Back to home button */
+.btn-home {
+    background-color: #6c757d;
+    color: white;
+    border: 2px solid #6c757d;
+    margin-top: 10px;
+}
+
+.btn-home:hover {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}

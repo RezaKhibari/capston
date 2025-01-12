@@ -1,0 +1,137 @@
+/* Budget.css */
+
+/* Container styling */
+.budget-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.budget-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+form input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Budget list styling */
+.budget-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.budget-item {
+  padding: 15px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.budget-item h3 {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.budget-item p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Progress bar styling */
+.progress-bar {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 15px;
+  margin-top: 10px;
+}
+
+.progress-bar .progress {
+  height: 100%;
+  background-color: green;
+  transition: width 0.3s ease;
+}
+
+/* Buttons inside budget item */
+.budget-item button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.budget-item button:first-of-type {
+  right: 90px;
+  background-color: #007bff;
+}
+
+.budget-item button:hover {
+  opacity: 0.9;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  form input,
+  form button {
+    width: 100%;
+  }
+
+  .budget-item button {
+    top: auto;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .budget-item button:first-of-type {
+    right: 90px;
+  }
+}

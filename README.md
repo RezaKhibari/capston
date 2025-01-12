@@ -1,6 +1,6 @@
 # capston
-The Capston project is full stack use React and PHP
-frontend is placed in react/fin-guard-client/fin-guard-client
+The Capston project is full stack use React and PHP.
+frontend is placed in react/capstone/fin-guard-client
 backend is placed in xampp/htdocs/fin-guard-api
 
 # FinGuard

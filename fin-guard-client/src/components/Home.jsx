@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 
 const Home = () => {
@@ -31,8 +31,13 @@ const Home = () => {
                 <div className="hero-content">
                     <h1>Welcome to FinGuard</h1>
                     <p>Take control of your finances with our smart tools and insights.</p>
-                    <button className="btn-modern btn-cta">Get Started</button>
-                </div>
+                    <button
+                      className="btn-modern btn-cta"
+                      onClick={() => navigate("/register")}
+                    >
+                      Get Started
+                    </button>
+              </div>
             </div>
 
             {/* Footer */}

@@ -1,55 +1,55 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CurrencySelector from "./CurrencySelector";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {
   const [transactions, setTransactions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [exchangeRates, setExchangeRates] = useState({});
+  const [selectedCurrency, setSelectedCurrency] = useState("USD");
 
   useEffect(() => {
-    // Fetch data from the API
-    const fetchTransactions = async () => {
-      try {
-        const response = await axios.get("http://localhost/fin-guard-api/dashboard.php");
-        setTransactions(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError("Failed to fetch data");
-        setLoading(false);
-      }
-    };
+    // Fetch transactions from the database
+    axios
+      .get("http://localhost/fin-guard-api/get_transactions.php")
+      .then((response) => setTransactions(response.data))
+      .catch((error) => console.error("Error fetching transactions:", error));
 
-    fetchTransactions();
+    // Fetch exchange rates
+    axios
+      .get("http://localhost/fin-guard-api/currency_rates.php")
+      .then((response) => setExchangeRates(response.data.rates))
+      .catch((error) => console.error("Error fetching exchange rates:", error));
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div style={{ color: "red" }}>{error}</div>;
-  }
+  const convertCurrency = (amount, baseCurrency) => {
+    const rate = exchangeRates[selectedCurrency] / exchangeRates[baseCurrency];
+    return (amount * rate).toFixed(2);
+  };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard">
       <h1>Dashboard</h1>
-      <table className="dashboard-table">
+      <CurrencySelector onCurrencyChange={setSelectedCurrency} />
+      <table className="transactions-table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Description</th>
-            <th>Amount</th>
             <th>Date</th>
+            <th>Description</th>
+            <th>Amount ({selectedCurrency})</th>
+            <th>Category</th>
           </tr>
         </thead>
         <tbody>
           {transactions.map((transaction) => (
             <tr key={transaction.id}>
-              <td>{transaction.id}</td>
+              <td>{transaction.transaction_date}</td>
               <td>{transaction.description}</td>
-              <td>${transaction.amount}</td>
-              <td>{transaction.date}</td>
+              <td>
+                {convertCurrency(transaction.amount, transaction.currency_code)}{" "}
+                {selectedCurrency}
+              </td>
+              <td>{transaction.category_name}</td>
             </tr>
           ))}
         </tbody>
